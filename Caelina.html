@@ -5,13 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thélyra — Enfant de Gaïa</title>
+    <style>
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            src: url('CormorantGaramond.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            src: url('CormorantGaramond-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+    </style>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Dancing+Script&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="arbre.css"> <!-- Lien vers le CSS du menu horizontal -->
 </head>
 
 <body>
+    <nav class="horizontal-menu">
+        <h1 class="title">🌳 L'Arbre de Thélyra</h1>
+        <ul class="branches">
+            <li><a href="origines/index.html">🧬 Origines</a></li>
+            <li><a href="pouvoirs/index.html">🌱 Pouvoirs & Savoirs</a></li>
+            <li><a href="foret/index.html">🌲 Monde & Forêt</a></li>
+            <li><a href="objets/index.html">🍂 Talismans & Objets</a></li>
+            <li><a href="souvenirs/index.html">🕯️ Souvenirs & Journal</a></li>
+        </ul>
+    </nav>
+
     <main class="fiche-container">
         <header class="fiche-header">
             <h1 class="nom">Thélyra</h1>
@@ -19,7 +46,7 @@
         </header>
 
         <section class="portrait-section">
-            <img src="portrait-thelyra.jpg" alt="Portrait de Thélyra" class="portrait">
+            <img src="portrait.png" alt="Portrait de Thélyra" class="portrait">
         </section>
 
         <section class="fiche-info">
