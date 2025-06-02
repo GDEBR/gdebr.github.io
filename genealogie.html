@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arbre Généalogique de Caelina</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f5ff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .tree {
+            position: relative;
+            margin: 40px auto;
+            width: fit-content;
+        }
+
+        .generation {
+            display: flex;
+            justify-content: center;
+        }
+
+        .couple {
+            display: flex;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .person {
+            border: 2px solid;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin: 0 5px;
+            text-align: center;
+            width: 120px;
+            position: relative;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mother {
+            border-color: #ff6b6b;
+        }
+
+        .father {
+            border-color: #4d96ff;
+        }
+
+        .child {
+            border-color: #6bca80;
+        }
+
+        .grandparent {
+            border-color: #a55eea;
+        }
+
+        .connector {
+            position: absolute;
+            background-color: #7e8da1;
+        }
+
+        /* Lien parent-enfant vertical */
+        .v-connector {
+            width: 2px;
+            height: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Lien entre conjoints */
+        .h-connector {
+            height: 2px;
+            width: 20px;
+            top: 50%;
+        }
+
+        .children-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .main {
+            font-weight: bold;
+            background-color: #f0f7ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tree">
+        <!-- Génération 1 (Gaïa) -->
+        <div class="generation">
+            <div class="person grandparent">
+                Gaïa
+                <div class="connector v-connector bottom"></div>
+            </div>
+        </div>
+
+        <!-- Génération 2 (Parents) -->
+        <div class="generation" style="margin-top: 40px;">
+            <div class="couple">
+                <div class="person mother">
+                    Jamya
+                    <div class="connector v-connector bottom"></div>
+                    <div class="connector h-connector right"></div>
+                </div>
+
+                <div class="person father">
+                    Aether
+                    <div class="connector v-connector bottom"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Génération 3 (Enfants) -->
+        <div class="children-container">
+            <div class="connector v-connector" style="height: 40px; top: -40px;"></div>
+
+            <div class="person child main">
+                Caelina
+            </div>
+
+            <div class="person child">
+                Frère Jumeau
+            </div>
+
+            <div class="person child">
+                Soeur Jumelle
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
