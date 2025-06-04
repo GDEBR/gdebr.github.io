@@ -4,74 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Caelina – L’arbre aux poèmes</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      background: #f6fff8;
-      color: #2f4f4f;
-      font-family: 'Garamond', serif;
-      position: relative;
-    }
-
-    .poeme {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 6em 1em;
-      white-space: pre-wrap;
-      z-index: 1;
-      position: relative;
-    }
-
-    h1, h2 {
-      text-align: center;
-      color: #3b5e3b;
-    }
-
-    h2 {
-      font-style: italic;
-      color: #5b8c5a;
-    }
-
-    p {
-      text-align: center;
-      line-height: 1.8;
-      font-size: 1.1em;
-    }
-
-    .air    { color: #5f9ea0; }   /* bleu-gris (éther) */
-    .mousse { color: #4f7942; }   /* vert mousse */
-    .tronc  { color: #8b5a2b; }   /* brun */
-    .feuille { color: #6b8e23; }  /* vert olive */
-    .racine { color: #2e8b57; }   /* vert foncé */
-
-    .falling-leaf {
-      position: fixed;
-      top: -60px;
-      width: 32px;
-      height: 32px;
-      background-image: url('feuille.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      animation: fall linear infinite;
-      opacity: 0.8;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.9;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0.2;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="poeme.css">
 </head>
 <body>
   <div class="poeme">
@@ -80,7 +13,6 @@
 
     <p>
       <span class="air">         ❈      ✧     ✦      ✧      ❈</span><br><br>
-
       <span class="air">       les souffles s’étreignent</span><br>
       <span class="air">   Aether frôle Jamya dans un soupir</span><br>
       <span class="air">un éclair d’amour vénéneux traverse l’éther</span><br>
@@ -88,34 +20,26 @@
       <span class="mousse">    une enfance dans le repli du monde</span><br>
       <span class="mousse">       vécue       sans exister</span><br>
       <span class="mousse">  (mais gravée en elle comme la vérité)</span><br><br>
-
       <span class="feuille">     🍃        ✿        🍃</span><br><br>
-
       <span class="mousse"> elle joue avec la mousse et les spores</span><br>
       <span class="mousse">  écoute le vent raconter sa naissance</span><br>
       <span class="mousse">un monde végétal tissé en souvenirs-feuilles</span><br><br>
-
       <span class="tronc">            ||</span><br>
       <span class="tronc">           ||||</span><br>
       <span class="tronc">          ||||||</span><br>
       <span class="tronc">         ||||||||</span><br>
       <span class="tronc">        ||||||||||</span><br><br>
-
       <span class="tronc"> Caelina grandit sans tuteur</span><br>
       <span class="tronc">son père partit voir si l’herbe était plus verte ailleurs</span><br>
       <span class="tronc"> sa mère s’effaça dans les feuillages</span><br>
       <span class="tronc">    alors elle apprit à s’élever seule</span><br><br>
-
       <span class="feuille">               🍂</span><br>
       <span class="feuille">           🍁</span><br>
       <span class="feuille">       🍃</span><br><br>
-
       <span class="feuille">les souvenirs tombent comme des graines</span><br>
       <span class="feuille"> chaque bruissement est une absence vécue</span><br>
       <span class="feuille">   chaque silence est une vérité enracinée</span><br><br>
-
       <span class="racine">        ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄</span><br><br>
-
       <span class="racine">  elle sait qu’elle fut sève et lumière</span><br>
       <span class="racine"> née d’un vertige et d’un souffle ancien</span><br>
       <span class="racine">  et qu’un jour, ses feuilles parleront</span><br>
@@ -123,20 +47,6 @@
     </p>
   </div>
 
-  <!-- Feuilles animées -->
-  <script>
-    function createLeaf() {
-      const leaf = document.createElement('div');
-      leaf.classList.add('falling-leaf');
-      leaf.style.left = `${Math.random() * window.innerWidth}px`;
-      leaf.style.animationDuration = `${5 + Math.random() * 5}s`;
-      leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
-      document.body.appendChild(leaf);
-
-      setTimeout(() => leaf.remove(), 11000);
-    }
-
-    setInterval(createLeaf, 500);
-  </script>
+  <script src="poeme.js"></script>
 </body>
 </html>
