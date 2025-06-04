@@ -91,7 +91,7 @@ body {
   top: -50px;
   width: 30px;
   height: 30px;
-  background-image: url("feuille.png"); /* image de feuille */
+  background-image: url("Feuille.png"); /* image de feuille */
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 999;
