@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Caelina – L’arbre aux poèmes</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .poeme {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 5em 1em;
+      font-family: 'Garamond', serif;
+      color: #2f4f4f;
+      white-space: pre-wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .falling-leaf {
+      position: fixed;
+      top: -50px;
+      width: 32px;
+      height: 32px;
+      background-image: url('feuille.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(120vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="poeme">
+    <h1>🌬️ Caelina</h1>
+    <h2>L’arbre aux poèmes</h2>
+
+    <p style="text-align: center;">
+         ❈      ✧     ✦      ✧      ❈<br><br>
+       les souffles s’étreignent<br>
+   Aether frôle Jamya dans un soupir<br>
+un éclair d’amour vénéneux traverse l’éther<br>
+ Caelina germe dans un battement figé<br>
+    une enfance dans le repli du monde<br>
+       vécue       sans exister<br>
+  (mais gravée en elle comme<br>
+la vérité)<br><br>
+     🍃        ✿        🍃<br><br>
+ elle joue avec la mousse et les spores<br>
+  écoute le vent raconter sa naissance<br>
+un monde végétal tissé en souvenirs-feuilles<br><br>
+            ||<br>
+           ||||<br>
+          ||||||<br>
+         ||||||||<br>
+        ||||||||||<br><br>
+ Caelina grandit sans tuteur<br>
+son père partit voir si l’herbe était plus verte ailleurs<br>
+ sa mère s’effaça dans les feuillages<br>
+    alors elle apprit à s’élever seule<br><br>
+               🍂<br>
+           🍁<br>
+       🍃<br><br>
+les souvenirs tombent comme des graines<br>
+ chaque bruissement est une absence vécue<br>
+   chaque silence est une vérité enracinée<br><br>
+        ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄<br><br>
+  elle sait qu’elle fut sève et lumière<br>
+ née d’un vertige et d’un souffle ancien<br>
+  et qu’un jour, ses feuilles parleront<br>
+   aux cieux      et aux vivants
+    </p>
+  </div>
+
+  <!-- Animation de feuilles -->
+  <script>
+    const createLeaf = () => {
+      const leaf = document.createElement('div');
+      leaf.classList.add('falling-leaf');
+      leaf.style.left = Math.random() * window.innerWidth + 'px';
+      leaf.style.animationDuration = (5 + Math.random() * 10) + 's';
+      leaf.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(leaf);
+
+      setTimeout(() => {
+        leaf.remove();
+      }, 15000);
+    };
+
+    setInterval(createLeaf, 600);
+  </script>
+</body>
+</html>
