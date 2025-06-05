@@ -105,24 +105,20 @@ body {
     opacity: 0;
   }
 }
-/* Couleurs spécifiques pour le poème Caelina */
+/* Couleurs spécifiques au poème */
 .air {
-  color: #5f9ea0; /* bleu-gris céleste */
+  color: #5f9ea0 !important; /* bleu-gris céleste */
 }
-
 .mousse {
-  color: #4f7942; /* vert mousse profond */
+  color: #4f7942 !important; /* vert mousse */
 }
-
 .tronc {
-  color: #8b5a2b; /* brun écorce */
+  color: #8b5a2b !important; /* brun écorce */
 }
-
 .feuille {
-  color: #6b8e23; /* vert olive doux */
+  color: #6b8e23 !important; /* vert olive */
 }
-
 .racine {
-  color: #2e8b57; /* vert foncé enraciné */
+  color: #2e8b57 !important; /* vert profond */
 }
 
