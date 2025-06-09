@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusion Gaia et Ether - Fond Animé</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0c1445 0%, #1a3c1f 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+            background: linear-gradient(45deg, #27ae60, #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: rgba(0, 20, 30, 0.4);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h2 {
+            color: #2ecc71;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .card p {
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Éléments du fond */
+        .forest-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        /* Arbres */
+        .tree {
+            position: absolute;
+            bottom: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 200px solid #3a2618;
+            opacity: 0.7;
+        }
+
+        .tree::before {
+            content: '';
+            position: absolute;
+            bottom: 200px;
+            left: -40px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #2c5f2d 0%, #1e3d1e 100%);
+            border-radius: 50%;
+            box-shadow:
+                0 0 30px rgba(46, 204, 113, 0.3),
+                0 0 60px rgba(39, 174, 96, 0.2);
+            animation: glow 4s infinite alternate;
+        }
+
+        /* Particules d'éther */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(155, 89, 182, 0.7);
+            animation: float 15s infinite linear;
+        }
+
+        /* Feuilles flottantes */
+        .leaf {
+            position: absolute;
+            background: #27ae60;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: float 20s infinite linear;
+            opacity: 0.7;
+        }
+
+        /* Lueur éthérée */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(155, 89, 182, 0.4) 0%, transparent 70%);
+            animation: pulse 8s infinite alternate;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow:
+                    0 0 30px rgba(46, 204, 113, 0.3),
+                    0 0 60px rgba(39, 174, 96, 0.2);
+            }
+
+            100% {
+                box-shadow:
+                    0 0 40px rgba(46, 204, 113, 0.5),
+                    0 0 80px rgba(39, 174, 96, 0.3),
+                    0 0 120px rgba(155, 89, 182, 0.2);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Fond animé -->
+    <div class="forest-bg" id="forest-bg">
+        <!-- Les éléments seront générés par JavaScript -->
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Fusion de Gaia et Ether</h1>
+            <p class="subtitle">Un fond de page animé inspiré de la forêt mystique de Gaia et des éléments éthérés
+                d'Ether, créé entièrement en CSS</p>
+        </header>
+
+        <div class="content">
+            <div class="card">
+                <h2>L'Esprit de Gaia</h2>
+                <p>Gaia représente la Terre Mère, source de vie et d'énergie naturelle. Dans ce fond, nous retrouvons
+                    les arbres majestueux, les feuilles flottantes et les couleurs profondes de la forêt.</p>
+                <p>Les nuances de vert et de brun évoquent la richesse de la nature, tandis que les animations subtiles
+                    créent un sentiment de vie permanente.</p>
+            </div>
+
+            <div class="card">
+                <h2>L'Essence d'Ether</h2>
+                <p>Ether incarne l'élément éthéré, la quintessence mystique qui imprègne l'univers. Les particules
+                    lumineuses, les lueurs vibrantes et les reflets bleutés représentent cette énergie subtile.</p>
+                <p>Les mouvements fluides et les effets de lumière créent une atmosphère onirique, fusionnant
+                    harmonieusement avec les éléments terrestres.</p>
+            </div>
+
+            <div class="card">
+                <h2>La Fusion</h2>
+                <p>La rencontre de Gaia et Ether crée un équilibre parfait entre le matériel et le spirituel, le
+                    tangible et l'intangible. Le fond représente cette harmonie à travers :</p>
+                <ul>
+                    <li>Les arbres terrestres avec leur lueur éthérée</li>
+                    <li>Les feuilles flottant comme des particules d'énergie</li>
+                    <li>Les dégradés de couleurs unissant terre et cosmos</li>
+                    <li>Les animations continues sans répétition visible</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>Fond animé créé en CSS pur | Gaia et Ether | Hauteur pseudo-infinie | Pas de répétition visible</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const forestBg = document.getElementById('forest-bg');
+
+            // Créer des arbres
+            for (let i = 0; i < 20; i++) {
+                const tree = document.createElement('div');
+                tree.classList.add('tree');
+
+                // Position aléatoire
+                const left = Math.random() * 100;
+                const height = 150 + Math.random() * 150;
+
+                tree.style.left = `${left}%`;
+                tree.style.height = `${height}px`;
+                tree.style.borderBottom = `${height}px solid #3a2618`;
+
+                // Animation delay
+                tree.style.animationDelay = `${Math.random() * 5}s`;
+
+                forestBg.appendChild(tree);
+            }
+
+            // Créer des particules d'éther
+            for (let i = 0; i < 80; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Taille aléatoire
+                const size = 2 + Math.random() * 8;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // Position aléatoire
+                const left = Math.random() * 100;
+                particle.style.left = `${left}%`;
+
+                // Couleur aléatoire (bleu, violet, blanc)
+                const colors = [
+                    'rgba(155, 89, 182, 0.8)',
+                    'rgba(52, 152, 219, 0.8)',
+                    'rgba(149, 165, 166, 0.8)',
+                    'rgba(142, 68, 173, 0.8)',
+                    'rgba(41, 128, 185, 0.8)',
+                    'rgba(236, 240, 241, 0.8)'
+                ];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                // Animation
+                const duration = 10 + Math.random() * 20;
+                const delay = Math.random() * 15;
+                particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
+
+                forestBg.appendChild(particle);
+            }
+
+            // Créer des feuilles
+            for (let i = 0; i < 50; i++) {
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf');
+
+                // Taille aléatoire
+                const size = 10 + Math.random() * 20;
+                leaf.style.width = `${size}px`;
+                leaf.style.height = `${size}px`;
+
+                // Position aléatoire
+                const left = Math.random() * 100;
+                leaf.style.left = `${left}%`;
+
+                // Couleur aléatoire (tons de vert, jaune, orange)
+                const colors = [
+                    '#27ae60', '#2ecc71', '#f1c40f', '#e67e22', '#16a085'
+                ];
+                leaf.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                // Animation
+                const duration = 15 + Math.random() * 25;
+                const delay = Math.random() * 20;
+                leaf.style.animation = `float ${duration}s infinite linear ${delay}s`;
+
+                forestBg.appendChild(leaf);
+            }
+
+            // Créer des lueurs éthérées
+            for (let i = 0; i < 15; i++) {
+                const glow = document.createElement('div');
+                glow.classList.add('glow');
+
+                // Taille aléatoire
+                const size = 100 + Math.random() * 300;
+                glow.style.width = `${size}px`;
+                glow.style.height = `${size}px`;
+
+                // Position aléatoire
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                glow.style.left = `${left}%`;
+                glow.style.top = `${top}%`;
+
+                // Animation
+                const duration = 5 + Math.random() * 10;
+                const delay = Math.random() * 5;
+                glow.style.animation = `pulse ${duration}s infinite alternate ${delay}s`;
+
+                forestBg.appendChild(glow);
+            }
+        });
+    </script>
+</body>
+
+</html>
