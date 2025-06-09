@@ -2,10 +2,10 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiche Personnage : Caelina — Enfant d'Aether et Jamya</title>
-    <link rel="icon" type="image/x-icon" href="Feuille.png">
+    <link rel="icon" type="image/x-icon" href="Feuille.png" />
     <style>
         @font-face {
             font-family: 'Cormorant Garamond';
@@ -20,23 +20,68 @@
             font-weight: bold;
             font-style: normal;
         }
+
+        /* Style simple du blockquote, juste couleur pour qu’il soit visible */
+        blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #3a6a2f;
+            /* vert sombre, pas de fond ni bordure */
+            margin: 1rem 0;
+        }
+
+        /* --- Styles du bouton --- */
+        .btn-arbre {
+            display: inline-block;
+            margin: 2rem auto 3rem auto;
+            padding: 0.75rem 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
+            background: linear-gradient(135deg, #3a6a2f, #6abc4f);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(58, 106, 47, 0.5);
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-align: center;
+            user-select: none;
+        }
+
+        .btn-arbre:hover {
+            background: linear-gradient(135deg, #5bb34f, #a2d875);
+            box-shadow: 0 8px 16px rgba(92, 179, 80, 0.7);
+            transform: translateY(-3px);
+        }
+
+        .btn-arbre:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(58, 106, 47, 0.4);
+        }
+
+        /* Centrer le bouton */
+        .btn-container {
+            text-align: center;
+        }
     </style>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Dancing+Script&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="arbre.css"> <!-- Lien vers le CSS du menu horizontal -->
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="arbre.css" />
 </head>
 
 <body>
     <nav class="horizontal-menu">
         <h1 class="title">Caelina</h1>
         <ul class="branches">
-            <li><a href="poeme.html">🌳 L'arbre aux poèmes</a></li>
-            <li><a href="pouvoirs.html">🌱 Pouvoirs</a></li>
-            <li><a href="Les Echorces.html">🌲 L'écorce</a></li>
-            <li><a href="objets.html">🍂 Armes & Objets</a></li>
-            <li><a href="souvenirs.html">📒 Journal</a></li>
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">🌳 L'arbre aux poèmes</a></li>
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">🌱 Pouvoirs</a></li>
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">🌲 L'écorce</a></li>
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">🍂 Armes & Objets</a></li>
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">📒 Journal</a></li>
         </ul>
     </nav>
 
@@ -47,7 +92,7 @@
         </header>
 
         <section class="portrait-section">
-            <img src="portrait.png" alt="Portrait de Thélyra" class="portrait">
+            <img src="portrait.png" alt="Portrait de Thélyra" class="portrait" />
         </section>
 
         <section class="fiche-info">
@@ -57,7 +102,19 @@
                 </blockquote>
             </div>
         </section>
+
+        <!-- Conteneur bouton -->
+        <div class="btn-container">
+            <button id="btnArbre" class="btn-arbre" type="button">Entrer dans l'arbre</button>
+        </div>
     </main>
+
+    <!-- Script inline pour le bouton -->
+    <script>
+        document.getElementById('btnArbre').addEventListener('click', () => {
+            window.location.href = 'Les Echorces.html';
+        });
+    </script>
 
     <script src="script.js"></script>
 </body>
