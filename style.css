@@ -1,0 +1,124 @@
+/* style.css */
+body {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  background: url("fond-feuille-texture.jpg") repeat;
+  background-color: #f4f1eb;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+.fiche-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 4px double #6b8e23;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(107, 142, 35, 0.2);
+}
+
+.fiche-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.nom {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  color: #4a774d;
+  margin: 0;
+}
+
+.sous-titre {
+  font-style: italic;
+  color: #6b8e23;
+  margin-top: 0.5rem;
+}
+
+.portrait-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.portrait {
+  max-width: 250px;
+  border-radius: 50%;
+  border: 5px solid #6b8e23;
+  box-shadow: 0 0 15px rgba(107, 142, 35, 0.4);
+}
+
+.fiche-info .bloc {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  background: #f8f5ef;
+  border-left: 4px solid #6b8e23;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+}
+
+.fiche-info .bloc.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fiche-info h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #3b5d3a;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.fiche-info ul {
+  padding-left: 1.2rem;
+}
+
+.citation blockquote {
+  font-style: italic;
+  color: #555;
+  text-align: center;
+  margin: 1rem auto;
+  font-size: 1.2rem;
+  max-width: 600px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.leaf {
+  position: fixed;
+  top: -50px;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 999;
+  animation: fall linear forwards;
+  pointer-events: none;
+}
+
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+/* Couleurs spécifiques au poème */
+.air {
+  color: #5f9ea0 !important; /* bleu-gris céleste */
+}
+.mousse {
+  color: #4f7942 !important; /* vert mousse */
+}
+.tronc {
+  color: #8b5a2b !important; /* brun écorce */
+}
+.feuille {
+  color: #6b8e23 !important; /* vert olive */
+}
+.racine {
+  color: #6B3226 !important; /* vert profond */
+}
+
