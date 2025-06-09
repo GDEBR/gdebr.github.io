@@ -103,7 +103,7 @@
 
 /* Effet feuille pour les liens */
 .branches li:nth-child(1) a::after {
-  content: "🌿";
+  content: "🌳";
   position: absolute;
   right: -15px;
   top: -5px;
@@ -112,7 +112,7 @@
 }
 
 .branches li:nth-child(2) a::after {
-  content: "🍃";
+  content: "🌱";
   position: absolute;
   right: -15px;
   top: -5px;
@@ -121,7 +121,7 @@
 }
 
 .branches li:nth-child(3) a::after {
-  content: "🌱";
+  content: "🌲";
   position: absolute;
   right: -15px;
   top: -5px;
@@ -139,7 +139,7 @@
 }
 
 .branches li:nth-child(5) a::after {
-  content: "🌸";
+  content: "📒";
   position: absolute;
   right: -15px;
   top: -5px;
