@@ -5,33 +5,45 @@
   <meta charset="UTF-8" />
   <title>L’arbre aux poèmes</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans&family=Dancing+Script&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 
   <style>
     body {
       font-family: 'Shantell Sans', cursive;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f0;
     }
 
-    .nom {
+    h1.nom {
       font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      text-align: center;
+      color: #3a6a2f;
+      margin-top: 2rem;
     }
 
-    /* Conteneur du texte, préserve espaces et retours */
+    .sous-titre {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      color: #5a5a3c;
+    }
+
     blockquote {
       white-space: pre-wrap;
       font-family: 'Shantell Sans', cursive;
-      margin: 0;
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 1rem 2rem;
     }
 
-    /* Classe spéciale tronc-centre */
     .tronc-centre {
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
+      font-family: 'Shantell Sans', cursive;
       text-align: center;
       display: block;
       margin: 0.1em 0;
@@ -39,6 +51,44 @@
       font-weight: 400;
       font-size: 1.1em;
       color: hsl(29, 53%, 20%);
+    }
+
+    /* --- Styles du bouton --- */
+    .btn-arbre {
+      display: inline-block;
+      margin: 2rem auto 3rem auto;
+      padding: 0.75rem 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      background: linear-gradient(135deg, #3a6a2f, #6abc4f);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(58, 106, 47, 0.5);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      text-align: center;
+      user-select: none;
+    }
+
+    .btn-arbre:hover {
+      background: linear-gradient(135deg, #4b893b, #7ed964);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(58, 106, 47, 0.6);
+    }
+
+    .btn-container,
+    .btn-double {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .btn-double {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   </style>
 </head>
@@ -99,6 +149,22 @@
       </div>
     </div>
   </div>
+
+  <!-- Boutons gauche/droite -->
+  <div class="btn-double">
+    <button id="btnRetour" class="btn-arbre" type="button">← Retour à l’entrée</button>
+    <button id="btnSuite" class="btn-arbre" type="button">Continuer vers l’écorce →</button>
+  </div>
+
+  <script>
+    document.getElementById('btnRetour').addEventListener('click', () => {
+      window.location.href = 'Caelina.html'; // remplace par ta page d'accueil
+    });
+
+    document.getElementById('btnSuite').addEventListener('click', () => {
+      window.location.href = 'Les Echorces.html'; // remplace par ta page suivante
+    });
+  </script>
 
   <script src="script.js"></script>
 </body>
