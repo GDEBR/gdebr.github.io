@@ -33,21 +33,38 @@ document.addEventListener("DOMContentLoaded", () => {
   blocs.forEach((bloc) => observer.observe(bloc));
 });
 
-// Feuilles tombantes magiques
+// Liste des textures de feuilles
+const feuilles = [
+  "Feuille.png",
+  "Feuille2.png",
+  "Feuille3.png"
+];
+
+// Crée une feuille avec une image aléatoire
 function createLeaf() {
   const leaf = document.createElement("div");
   leaf.classList.add("leaf");
+
+  // Choix d'une image au hasard
+  const image = feuilles[Math.floor(Math.random() * feuilles.length)];
+  leaf.style.backgroundImage = `url('${image}')`;
+
+  // Position aléatoire et animation
   leaf.style.left = `${Math.random() * 100}vw`;
-  leaf.style.animationDuration = `${5 + Math.random() * 5}s`; // durée de chute
+  leaf.style.animationDuration = `${5 + Math.random() * 5}s`;
   leaf.style.opacity = Math.random();
+
   document.body.appendChild(leaf);
 
+  // Nettoyage
   setTimeout(() => {
     leaf.remove();
   }, 10000);
 }
 
-setInterval(createLeaf, 500); // une feuille toutes les 0.5s
+// Lancer des feuilles régulièrement
+setInterval(createLeaf, 500);
+
 
 // Apparition douce des branches
 document.addEventListener("DOMContentLoaded", () => {

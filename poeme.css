@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #f6fff8;
+  font-family: 'Garamond', serif;
+  color: #2f4f4f;
+}
+
+.poeme {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 6em 1em;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 1.1em;
+  white-space: pre-wrap;
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #3b5e3b;
+}
+
+h2 {
+  font-style: italic;
+  color: #5b8c5a;
+}
+
+.air    { color: #5f9ea0; }
+.mousse { color: #4f7942; }
+.tronc  { color: #8b5a2b; }
+.feuille { color: #6b8e23; }
+.racine { color: #2e8b57; }
+
+.falling-leaf {
+  position: fixed;
+  top: -60px;
+  width: 32px;
+  height: 32px;
+  background-image: url('Feuille.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: fall linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
