@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Journal de Caelina</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background: url("fond-feuille-texture.jpg") repeat;
+      background-color: #f4f1eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .journal {
+      width: 90%;
+      max-width: 700px;
+      height: 80vh;
+      background: rgba(255, 255, 255, 0.95);
+      border: 4px double #6b8e23;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(107, 142, 35, 0.2);
+      padding: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .page.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      background: #6b8e23;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #4a6322;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #4a774d;
+    }
+
+    .date {
+      font-style: italic;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="journal">
+    <div class="page active">
+      <h2>🌒 Jour sans nom</h2>
+      <p class="date">— Je ne sais pas si ce jour a existé.</p>
+      <p>Aujourd’hui, j’ai senti la mémoire de ma mère dans l’odeur d’une écorce fendue.</p>
+      <p>Un mélange d’humidité, de douleur et de chaleur ancienne.</p>
+      <p>Je n’ai aucun mot d’elle, aucune image. Mais parfois… c’est comme si elle me regardait depuis les arbres morts.</p>
+    </div>
+
+    <div class="page">
+      <h2>🌿 Jour de mousse</h2>
+      <p class="date">— Le monde m’observe comme si j’étais une étrangère.</p>
+      <p>Mais moi, je l’entends respirer. Le sol grince doucement quand il me reconnaît. Je crois que c’est là que je suis chez moi : dans ce qui ne parle pas.</p>
+      <p>J’ai encore dormi dans les racines. Elles me parlent. Pas avec des phrases, mais avec des lenteurs.</p>
+    </div>
+
+    <div class="page">
+      <h2>🪶 Jour de vent doux</h2>
+      <p class="date">— Un souvenir est tombé aujourd’hui.</p>
+      <p>Je ne sais pas s’il est vrai. Un homme avec un regard de ciel m’a pris la main. Il n’a rien dit. Mais je crois qu’il m’aimait.</p>
+      <p>C’est terrible, de se souvenir de choses qu’on n’a jamais vécues. C’est comme avoir soif d’une rivière qui n’existe que dans ton propre corps.</p>
+    </div>
+
+    <div class="page">
+      <h2>🌧 Jour de silence</h2>
+      <p class="date">— Je suis restée des heures sans parler.</p>
+      <p>J’ai laissé la pluie me traverser. Je voulais voir si j’existais encore sans les mots.</p>
+      <p>Je crois que oui. Mais je suis moins solide que je ne le pensais.</p>
+    </div>
+
+    <div class="page">
+      <h2>🌕 Pleine pensée</h2>
+      <p class="date">— Je ne suis pas une fille ordinaire.</p>
+      <p>Je suis faite de quelque chose de trop ancien pour être compris.</p>
+      <p>Mais parfois, j’aimerais juste… être prise dans des bras. Et qu’on me dise que je n’ai pas besoin de prouver que j’existe.</p>
+      <p>Je suis forte, oui. Mais je suis fatiguée de l’être seule.</p>
+    </div>
+
+    <div class="page">
+      <h2>🌀 Jour retourné</h2>
+      <p class="date">— Il y a eu une faille ce soir.</p>
+      <p>Un frisson dans l’air, une cassure dans la lumière. Je crois que mon père a soufflé mon nom quelque part dans le vent.</p>
+      <p>Je ne sais pas s’il regrette. Mais moi, je me demande si je suis née de l’amour ou de l’expérience. Et si je suis seulement la conséquence d’un sort qui a mal tourné.</p>
+    </div>
+
+    <div class="page">
+      <h2>🍂 Dernier jour de l’arbre</h2>
+      <p class="date">— Je sens que je vais devoir quitter ce lieu.</p>
+      <p>L’arbre qui m’a élevée est en train de se refermer. Ce n’est pas une punition. C’est un passage.</p>
+      <p>Je suis prête, je crois. À aller vers le monde. Même s’il ne m’attend pas. Même s’il ne me comprend pas.</p>
+      <p>Mais je ne pars pas vide. Je pars avec chaque feuille tombée, chaque racine murmurée, et chaque souffle de ceux qui m’ont oubliée.</p>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="prevBtn">← Page précédente</button>
+      <button class="btn" id="nextBtn">Page suivante →</button>
+    </div>
+  </div>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentPage = 0;
+
+    function showPage(index) {
+      pages.forEach((page, i) => {
+        page.classList.toggle('active', i === index);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+  </script>
+</body>
+</html>
