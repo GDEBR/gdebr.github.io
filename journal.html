@@ -2,10 +2,11 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Journal de la Souche</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Dancing+Script&display=swap"
-    rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Les feuilles</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cormorant+Garamond&family=Dancing+Script&family=Great+Vibes&family=Indie+Flower&family=Patrick+Hand&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -16,169 +17,292 @@
     body,
     html {
       height: 100%;
+      background: url("https://www.transparenttextures.com/patterns/asfalt-dark.png") #362c2a;
       font-family: "Cormorant Garamond", serif;
-      background: url("https://www.transparenttextures.com/patterns/paper-fibers.png") #f4f1eb;
       color: #2c2c2c;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .souche {
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      background: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+      border-radius: 2rem;
+      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.6);
+      padding: 3rem;
     }
 
     .journal {
       position: relative;
-      width: 80%;
-      /* bloc à 80% de la largeur */
-      max-width: 900px;
-      height: 100%;
-      margin: 0 auto;
-      /* centré, donc 10% de chaque côté */
-      padding: 2rem;
+      background: #fefcf5;
+      border: 4px dashed #8b5a2b;
+      border-radius: 1.5rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      height: 80vh;
+      /* Ajout de marge pour éviter que les pages ne soient masquées par les boutons */
+    }
+
+    .journal::before,
+    .journal::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Leaf_icon.svg/1200px-Leaf_icon.svg.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+    }
+
+    .journal::before {
+      top: -20px;
+      left: -20px;
+      transform: rotate(-20deg);
+    }
+
+    .journal::after {
+      bottom: -20px;
+      right: -20px;
+      transform: rotate(160deg);
     }
 
     .page {
       display: none;
-      width: 100%;
+      width: fit-content;
+      max-width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      border: 4px double #6b8e23;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(107, 142, 35, 0.2);
-      padding: 2rem;
+      padding: 2.5rem;
       overflow-y: auto;
-      line-height: 1.6;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      background:
+        url('https://www.transparenttextures.com/patterns/paper-fibers.png') repeat,
+        #fefcf5;
+      border-radius: 1.5rem;
+      box-shadow: inset 0 0 15px rgba(139, 90, 43, 0.15);
     }
 
     .page.active {
-      display: block;
+      display: flex;
     }
 
     .page h2 {
       font-family: "Dancing Script", cursive;
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: #4a774d;
       margin-bottom: 1rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
 
-    /* flèches fixes à 10% du viewport */
+    .page pre {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      background: rgba(255, 255, 240, 0.6);
+      color: #3e5530;
+      padding: 1.5rem;
+      border-left: none;
+      border-radius: 1rem;
+      box-shadow: inset 0 0 10px rgba(139, 90, 43, 0.1);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .age-8 pre {
+      font-family: "Shadows Into Light", cursive, sans-serif;
+      font-size: 1.3rem;
+    }
+
+    .age-10 pre {
+      font-family: "Comic Sans MS", "Patrick Hand", cursive, sans-serif;
+      font-size: 1.4rem;
+    }
+
+    .age-12 pre {
+      font-family: "Indie Flower", "Handlee", cursive, sans-serif;
+      font-size: 1.3rem;
+    }
+
+    .age-14 pre {
+      font-family: "Dancing Script", "Satisfy", cursive, sans-serif;
+      font-size: 1.4rem;
+    }
+
+    .age-15 pre {
+      font-family: "Great Vibes", "Alex Brush", cursive, sans-serif;
+      font-size: 1.4rem;
+    }
+
     .nav-btn {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(107, 142, 35, 0.8);
+      background: rgba(107, 142, 35, 0.85);
       border: none;
       color: white;
       font-size: 2rem;
-      width: 3rem;
-      height: 3rem;
+      width: 3.5rem;
+      height: 3.5rem;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: background 0.2s;
     }
 
     .nav-btn:hover {
-      background: rgba(74, 119, 77, 0.9);
+      background: rgba(74, 119, 77, 0.95);
     }
 
     .nav-btn.prev {
-      left: 10vw;
+      left: 5vw;
     }
 
     .nav-btn.next {
-      right: 10vw;
+      right: 5vw;
+    }
+
+    .btn-arbre {
+      display: inline-block;
+      margin: 0 1rem;
+      padding: 0.75rem 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      background: linear-gradient(135deg, #3a6a2f, #6abc4f);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(58, 106, 47, 0.5);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      text-align: center;
+      user-select: none;
+    }
+
+    .btn-arbre:hover {
+      background: linear-gradient(135deg, #5bb34f, #a2d875);
+      box-shadow: 0 8px 16px rgba(92, 179, 80, 0.7);
+      transform: translateY(-3px);
+    }
+
+    .btn-arbre:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(58, 106, 47, 0.4);
+    }
+
+    /* Positionner les boutons en bas */
+    .btn-double {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      z-index: 100;
     }
   </style>
 </head>
 
 <body>
-
-  <div class="journal">
-    <div class="page active">
-      <h2>Jour 1 – Racines</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula, orci quis ultricies vestibulum,
-        lectus purus accumsan nulla, non interdum orci nisl et metus. Vestibulum placerat urna nec aliquam aliquet. Ut
-        euismod dui at quam venenatis, in tristique dolor aliquet. Integer nec libero a nunc scelerisque cursus non et
-        purus. Duis sit amet orci nisi. Suspendisse potenti. Donec porttitor lectus in arcu facilisis, a ornare lacus
-        tincidunt. Curabitur tincidunt risus vitae elit tincidunt hendrerit. Proin vitae magna at est elementum commodo.
-        Quisque dignissim rhoncus dui, a sollicitudin ligula fermentum quis. Aenean pellentesque urna at dui pretium,
-        vitae auctor ex vestibulum. Vivamus nec posuere tortor. Aliquam erat volutpat. Vivamus sit amet ultricies lacus.
-        Sed commodo nisi sed ligula tincidunt aliquet. Sed vitae ornare mauris. Nullam non ex cursus, pretium massa
-        vitae, aliquet diam. Phasellus et arcu id tortor tristique hendrerit. Curabitur a lorem vel lacus tempus
-        accumsan. Duis ut orci sit amet lorem consequat imperdiet. Integer ullamcorper aliquet odio, vitae pharetra
-        dolor tristique vitae. Nullam aliquet magna non turpis pulvinar, nec tristique felis posuere.</p>
-    </div>
-    <div class="page">
-      <h2>Jour 2 – Sous la mousse</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis ipsum ac velit posuere, at tincidunt
-        lectus pretium. Nulla facilisi. Sed in libero eget nibh ultricies fermentum. Vestibulum sit amet lacus nec mi
-        convallis condimentum nec eu lectus. Donec sit amet nisl sed ex elementum ultricies at id nulla. Mauris
-        vulputate justo vitae dui vestibulum, id condimentum lorem venenatis. Cras scelerisque odio id erat scelerisque,
-        nec cursus velit fringilla. Pellentesque non purus vitae odio fringilla euismod. Suspendisse potenti. Praesent
-        dapibus tellus a justo efficitur, ut vestibulum ligula fermentum. Maecenas vulputate sapien in metus imperdiet,
-        non pulvinar augue ultricies. Aliquam sit amet erat vitae ante pellentesque faucibus. Etiam vehicula dolor vitae
-        sapien ultrices, vitae vehicula magna luctus. Duis vitae ipsum at tellus gravida mollis. Integer ac magna ac est
-        aliquam cursus a eget odio. Curabitur vitae nunc vel eros ornare sollicitudin. Morbi in tellus nec sapien
-        venenatis luctus non at sapien. Duis vitae justo non metus suscipit tincidunt. Vivamus vitae neque et eros
-        consectetur tincidunt ac sed neque.</p>
-    </div>
-    <div class="page">
-      <h2>Jour 3 – Parfum d’écorce</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et urna eu justo dapibus tempor. Phasellus
-        viverra urna ac dui mattis dignissim. Sed laoreet sem vitae quam feugiat, ut interdum ligula hendrerit. Integer
-        placerat odio non ligula malesuada, vitae scelerisque odio volutpat. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas. Sed ut purus nec orci posuere malesuada. Vivamus nec
-        risus in ligula egestas sollicitudin. Ut sit amet tortor quis augue facilisis elementum. Quisque non velit at mi
-        laoreet fermentum at eu metus. Cras hendrerit, metus sit amet euismod ornare, libero tortor rutrum augue, ut
-        pulvinar sapien orci non justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-        Curae; Morbi condimentum felis sed metus efficitur, ac ullamcorper turpis tristique. Vivamus a velit at sapien
-        posuere fermentum. Mauris suscipit arcu vitae diam consequat, et dictum tortor tristique.</p>
-    </div>
-    <div class="page">
-      <h2>Jour 4 – Le chant du vent</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Donec lacinia odio nec magna suscipit,
-        in hendrerit lectus pulvinar. Donec consequat lacus sed ipsum sodales, et luctus leo pretium. Integer auctor
-        urna a ex tincidunt, sit amet lobortis sapien viverra. Aenean ut dui sed risus ultricies maximus vitae nec
-        tortor. Cras sit amet arcu nec lectus placerat bibendum. Pellentesque semper metus ut nulla fermentum, ac cursus
-        est fermentum. Sed euismod lorem vitae ex convallis, eget euismod nisl pellentesque. Aliquam a nisl sit amet
-        eros vehicula facilisis. Fusce ut lectus nec odio tempus rhoncus. Integer egestas cursus ante, sit amet
-        fermentum massa semper a. Sed vitae tellus et sapien congue fermentum. Vestibulum non nunc metus. Proin et magna
-        eget lectus laoreet faucibus.</p>
-    </div>
-    <div class="page">
-      <h2>Jour 5 – L’humus des souvenirs</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at orci in dui volutpat varius. Ut vitae nisl
-        nec orci consequat tincidunt. Sed nec dolor sit amet nulla vehicula aliquet. Phasellus eu odio vitae dui
-        bibendum congue. Etiam quis tortor in eros sollicitudin imperdiet. Pellentesque porta eros vitae justo molestie,
-        non interdum dolor fermentum. Nullam scelerisque ligula vitae sapien dictum, sit amet vestibulum odio finibus.
-        Donec sit amet nisl ac orci vehicula lacinia. Fusce in sem vel justo fermentum pharetra. Ut sagittis dui vitae
-        sapien molestie, at malesuada dui fermentum. Vivamus pharetra leo sed erat vehicula, quis porttitor odio
-        dignissim. Sed non lectus et mi commodo ullamcorper. Nam elementum eros non mi aliquet, vitae fringilla purus
-        dapibus. Aliquam erat volutpat. Integer ac nisi nec nisl vehicula sollicitudin. Nulla facilisi. Donec sit amet
-        sapien at nulla aliquam varius. Suspendisse potenti. In hac habitasse platea dictumst. Nulla at urna sit amet
-        lacus commodo commodo sit amet nec justo.</p>
+  <div class="souche">
+    <div class="journal">
+      <div class="page age-8 active">
+        <h2>Jour sans nom</h2>
+        <pre>
+Je ne sais pas si ce jour est vraiment arrivé mais je l’écris pour ne pas l’oublier.
+Aujourd’hui j’ai senti une odeur d’arbre, un mélange d’humidité et de chaleur, un peu triste.
+Je n’ai pas de photos ni de mots sur maman, mais parfois j’ai l’impression qu’elle me regarde à travers les arbres.
+        </pre>
+      </div>
+      <div class="page age-10">
+        <h2>Jour de vent</h2>
+        <pre>
+Le monde me regarde comme si je venais d’une autre planète, mais moi j’entends la nature respirer doucement.
+Le sol fait un petit bruit quand il me reconnaît et je crois que je suis chez moi là où il n’y a pas besoin de paroles.
+J’ai encore dormi dans les racines, elles ne parlent pas avec des mots mais elles me racontent leur lenteur.
+        </pre>
+      </div>
+      <div class="page age-12">
+        <h2>Jour de vent</h2>
+        <pre>
+Un souvenir est tombé dans ma tête aujourd’hui, je ne sais pas s’il est vrai.
+Un homme aux yeux comme le ciel m’a pris la main, il n’a rien dit mais je crois qu’il m’aimait.
+C’est étrange de se souvenir de choses qu’on n’a jamais vécues, c’est comme avoir soif d’une rivière qui n’existe qu’en toi.
+        </pre>
+      </div>
+      <div class="page age-14">
+        <h2>Jour de silence</h2>
+        <pre>
+Je suis restée longtemps sans parler, j’ai laissé la pluie traverser mon corps parce que je voulais savoir si j’existais encore sans mots.
+Je crois que oui.
+Mais je suis moins forte que je pensais.
+        </pre>
+      </div>
+      <div class="page age-15">
+        <h2>Dernier jour</h2>
+        <pre>
+Je sens que bientôt je vais devoir partir.
+L’arbre qui m’a protégée se referme doucement, ce n’est pas une punition, c’est un passage.
+Je suis prête à aller vers le monde même s’il ne m’attend pas, même s’il ne me comprend pas, mais je ne pars pas vide, je pars avec chaque feuille tombée, chaque racine murmurée et chaque souffle de ceux qui m’ont oubliée.
+        </pre>
+      </div>
     </div>
   </div>
 
   <button class="nav-btn prev" onclick="prevPage()">←</button>
   <button class="nav-btn next" onclick="nextPage()">→</button>
+  <div class="btn-double">
+    <button id="btnRetour" class="btn-arbre" type="button">← Retour à l’entrée</button>
+    <button id="btnSuite" class="btn-arbre" type="button">Un jour y'aura un truc (peut-être) →</button>
+  </div>
 
   <script>
     const pages = document.querySelectorAll('.page');
-    let current = 0;
+    let currentPage = 0;
 
-    function showPage(idx) {
-      pages[current].classList.remove('active');
-      current = idx;
-      pages[current].classList.add('active');
+    function showPage(index) {
+      pages.forEach(p => p.classList.remove('active'));
+      pages[index].classList.add('active');
     }
-    function nextPage() {
-      if (current < pages.length - 1) showPage(current + 1);
-    }
+
     function prevPage() {
-      if (current > 0) showPage(current - 1);
+      if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+      }
     }
-  </script>
 
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    }
+
+    document.getElementById('btnRetour').addEventListener('click', () => {
+      window.location.href = 'Caelina.html';
+    });
+
+    document.getElementById('btnSuite').addEventListener('click', () => {
+      window.location.href = '.html';
+    });
+
+    showPage(currentPage);
+  </script>
 </body>
 
 </html>
