@@ -2,43 +2,130 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Poème Racine</title>
+  <title>Poème – Racine</title>
   <style>
     body {
-      background-color: #f4f1ee;
+      background: #f7f3ec;
       font-family: 'Georgia', serif;
+      padding: 3em;
       color: #2e1f12;
-      white-space: pre;
-      padding: 2em;
     }
-    .ligne {
-      display: flex;
+
+    .racine-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
     }
-    .ramification {
-      margin-left: 2em;
+
+    .vers {
+      position: absolute;
+      white-space: nowrap;
+      font-family: 'Garamond', serif;
+      transition: transform 0.3s ease;
+    }
+
+    .vers:nth-child(1) {
+      top: 0;
+      left: 40%;
+      font-size: 22px;
+      font-weight: bold;
+      color: #3e2f24;
+    }
+
+    .vers:nth-child(2) {
+      top: 60px;
+      left: 30%;
+      font-size: 18px;
+      transform: rotate(-6deg);
+      color: #6e513c;
+    }
+
+    .vers:nth-child(3) {
+      top: 120px;
+      left: 45%;
+      font-size: 16px;
+      transform: rotate(8deg);
+      color: #402d1d;
+      font-style: italic;
+    }
+
+    .vers:nth-child(4) {
+      top: 180px;
+      left: 28%;
+      font-size: 20px;
+      transform: rotate(-10deg);
+      font-family: 'Didot', serif;
+      color: #2c1a0f;
+    }
+
+    .vers:nth-child(5) {
+      top: 250px;
+      left: 48%;
+      font-size: 17px;
+      transform: rotate(6deg);
+      color: #5b3c2b;
+    }
+
+    .vers:nth-child(6) {
+      top: 310px;
+      left: 35%;
+      font-size: 16px;
+      transform: rotate(-12deg);
+      font-style: italic;
+      color: #7c5b45;
+    }
+
+    .vers:nth-child(7) {
+      top: 380px;
+      left: 52%;
+      font-size: 18px;
+      transform: rotate(4deg);
+      font-weight: 600;
+      color: #3a2418;
+    }
+
+    .vers:nth-child(8) {
+      top: 440px;
+      left: 38%;
+      font-size: 16px;
+      transform: rotate(-7deg);
+      color: #6c4a35;
+      font-family: 'Palatino Linotype', serif;
+    }
+
+    .vers:nth-child(9) {
+      top: 500px;
+      left: 46%;
+      font-size: 15px;
+      transform: rotate(5deg);
+      font-style: italic;
+      color: #856148;
+    }
+
+    .vers:nth-child(10) {
+      top: 560px;
+      left: 40%;
+      font-size: 20px;
+      font-weight: bold;
+      transform: rotate(0deg);
+      color: #1f120b;
+      font-family: 'Playfair Display', serif;
     }
   </style>
 </head>
 <body>
-<pre>
-Racine
-
-|  
-|__ Sous la terre des vers, un frisson se devine,
-    |
-    |__ Comme un alexandrin tombé dans l'humus.
-        |
-        |__ Une plainte d’Hermione, en silence s’incline,
-            |
-            |__ Ses nœuds sont d’encre, et ses fibres sont ruses.
-                |
-                |__ Les passions rampent, tragiques, obstinées,
-                    |
-                    |__ Nourries par la voix d’un théâtre ancien.
-                        |
-                        |__ Chaque mot enfoui y germe en destinée,
-                            |
-                            |__ Et pleure une reine au regard racinien.
-</pre>
+  <div class="racine-container">
+    <div class="vers">Racine dort sous un sol de silence,</div>
+    <div class="vers">Ses mots s'enroulent comme des lianes anciennes,</div>
+    <div class="vers">Un vers fléchit, une branche s’élance,</div>
+    <div class="vers">Là où l’amour devient peine souveraine.</div>
+    <div class="vers">Phèdre respire encore sous l’humus du théâtre,</div>
+    <div class="vers">Et l’alexandrin, souterrain, suinte en spasmes lents,</div>
+    <div class="vers">Les nœuds du destin forment des artères d’albâtre,</div>
+    <div class="vers">Une douleur en fleurs germe entre deux temps.</div>
+    <div class="vers">Les passions rampent, divines, condamnées,</div>
+    <div class="vers">Et la racine saigne, en vers raciniens.</div>
+  </div>
 </body>
 </html>
